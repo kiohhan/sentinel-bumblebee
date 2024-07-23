@@ -1,4 +1,5 @@
 import { fetchObjects } from "@/app/lib/fetch/object"
+import { DeleteObject } from "./delete-form"
 import Link from "next/link"
 
 export default async function ObjectTable() {
@@ -22,6 +23,7 @@ export default async function ObjectTable() {
                             <td className="whitespace-nowrap py-3 pl-6 pr-3">{obj.name}</td>
                             <td className="whitespace-nowrap py-3 pl-6 pr-3">
                                 <Link href={`/object/${obj.id}/edit`}><button>Edit</button></Link>
+                                <DeleteObject id={obj.id} />
                             </td>
                         </tr>)
                     })
