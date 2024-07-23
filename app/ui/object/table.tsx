@@ -22,8 +22,12 @@ export default async function ObjectTable() {
                             <td className="whitespace-nowrap py-3 pl-6 pr-3">{obj.id}</td>
                             <td className="whitespace-nowrap py-3 pl-6 pr-3">{obj.name}</td>
                             <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                                <Link href={`/object/${obj.id}/edit`}><button>Edit</button></Link>
-                                <DeleteObject id={obj.id} />
+                                <div className="flex">
+                                    <Link href={`/object/${obj.id}/edit`}>
+                                        <button className="rounded-md border p-2 bg-blue-100 hover:bg-gray-100">Edit</button>
+                                    </Link>
+                                    <DeleteObject id={obj.id} />
+                                </div>
                             </td>
                         </tr>)
                     })
