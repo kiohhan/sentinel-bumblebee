@@ -19,8 +19,8 @@ export type FieldInput = {
 
 export type Object = {
     name: string;
-    fields: string[];
-    workflows: string[];
+    fields: string;
+    workflows: string;
 }
 
 export type DBObject = Object & {
