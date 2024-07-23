@@ -16,3 +16,13 @@ export type FieldInput = {
     dbname: string;
     type: FieldType;
 }
+
+export type Object = {
+    name: string;
+    fields: string[];
+    workflows: string[];
+}
+
+export type DBObject = Object & {
+    id: string;
+}

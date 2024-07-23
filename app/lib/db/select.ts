@@ -10,3 +10,13 @@ export const findManyRaw = async (table: string) => {
         throw e
     }
 }
+
+export const findOneRaw = async (table: string, id: string) => {
+    try {
+        const query = `SELECT * FROM ${table} WHERE id=${id}`
+        const res = await myPool.query(query)
+        return res.rows[0]
+    } catch (e) {
+        throw e
+    }
+}
