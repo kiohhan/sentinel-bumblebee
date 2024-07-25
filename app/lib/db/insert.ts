@@ -32,6 +32,7 @@ export const createOne = async (table: string, fields: string[], fieldValues: st
         let sql = `INSERT INTO ${table} (${util_getFieldInsertSQL(table, fields)}) VALUES (${util_getFieldValueInsertSQL(fieldValues)}) RETURNING id`
         console.log(sql)
         const resp = await myPool.query(sql, fieldValues)
+        await new Promise(r => setTimeout(r, 5000));
         return resp
     } catch (e) {
         throw e
@@ -47,6 +48,7 @@ export const createOneNoConflict = async (table: string, fields: string[], field
         let sql = `INSERT INTO ${table} (${util_getFieldInsertSQL(table, fields)}) VALUES (${util_getFieldValueInsertSQL(fieldValues)}) ON CONFLICT DO NOTHING RETURNING id`
         console.log(sql)
         const resp = await myPool.query(sql, fieldValues)
+        await new Promise(r => setTimeout(r, 5000));
         return resp
     } catch (e) {
         throw e

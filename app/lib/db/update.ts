@@ -19,6 +19,7 @@ export const updateOne = async (table: string, fields: string[], fieldValues: st
         let sql = `UPDATE ${table} SET ${util_getFieldUpdateSQL(fields)} WHERE id=${id}`
         console.log(sql)
         const resp = await myPool.query(sql, fieldValues)
+        await new Promise(r => setTimeout(r, 5000));
         return resp
     } catch (e) {
         throw e

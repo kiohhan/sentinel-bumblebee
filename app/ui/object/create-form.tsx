@@ -19,6 +19,5 @@ export default function CreateObjectForm() {
         <div className="flex mt-3">
             <Button type="submit">Create Object</Button>
         </div>
-
     </form>
 }
