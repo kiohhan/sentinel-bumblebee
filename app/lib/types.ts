@@ -26,3 +26,8 @@ export type Object = {
 export type DBObject = Object & {
     id: string;
 }
+
+export type BreadcrumbType = {
+    name: string;
+    link: string;
+}

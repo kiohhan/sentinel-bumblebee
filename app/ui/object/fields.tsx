@@ -1,27 +1,38 @@
-export default function FieldTable({fieldsJSON}: {fieldsJSON: string}) {
+import {
+    Table,
+    TableBody,
+    TableCaption,
+    TableCell,
+    TableFooter,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from "@/components/ui/table"
+
+export default function FieldTable({ fieldsJSON }: { fieldsJSON: string }) {
     const fields = JSON.parse(fieldsJSON)
     return <div>
-        <table className="hidden min-w-full text-gray-900 md:table">
-            <thead className="rounded-lg text-left text-sm font-normal">
-                <tr>
-                    <th scope="col" className="px-4 py-5 font-medium sm:pl-6">Name</th>
-                    <th scope="col" className="px-4 py-5 font-medium sm:pl-6">Type</th>
-                </tr>
-            </thead>
-            <tbody className="bg-white">
+        <Table className="hidden min-w-full text-gray-900 md:table">
+            <TableHeader className="rounded-lg text-left text-sm font-normal">
+                <TableRow>
+                    <TableHead className="py-5 font-medium">Name</TableHead>
+                    <TableHead className="py-5 font-medium">Type</TableHead>
+                </TableRow>
+            </TableHeader>
+            <TableBody className="bg-white">
                 {(fields && fields.length > 0 ? (
                     fields.map((field: any) => {
-                        return (<tr className="w-full border-b py-3 text-sm last-of-type:border-none">
-                            <td className="whitespace-nowrap py-3 pl-6 pr-3">{field.name}</td>
-                            <td className="whitespace-nowrap py-3 pl-6 pr-3">{field.type}</td>
-                            <td className="whitespace-nowrap py-3 pl-6 pr-3">
+                        return (<TableRow className="w-full border-b py-3 text-sm last-of-type:border-none">
+                            <TableCell className="whitespace-nowrap py-3">{field.name}</TableCell>
+                            <TableCell className="whitespace-nowrap py-3">{field.type}</TableCell>
+                            <TableCell className="whitespace-nowrap py-3">
                                 <div className="flex">
                                 </div>
-                            </td>
-                        </tr>)
+                            </TableCell>
+                        </TableRow>)
                     })
-                ) : (<tr></tr>))}
-            </tbody>
-        </table>
+                ) : (<TableRow></TableRow>))}
+            </TableBody>
+        </Table>
     </div>
 }
