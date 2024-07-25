@@ -17,6 +17,8 @@ export default function FieldTable({ fieldsJSON }: { fieldsJSON: string }) {
                 <TableRow>
                     <TableHead className="py-5 font-medium">Name</TableHead>
                     <TableHead className="py-5 font-medium">Type</TableHead>
+                    <TableHead className="py-5 font-medium">Options</TableHead>
+                    <TableHead className="py-5 font-medium">Actions</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody className="bg-white">

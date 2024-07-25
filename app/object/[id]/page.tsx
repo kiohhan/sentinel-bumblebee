@@ -17,9 +17,16 @@ export default async function Page({ params }: { params: { id: string } }) {
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
             {`${myObj.name}`}
         </h1>
-        <div className="mt-3">
-            <Button><Link href='/object/create'>Add Field</Link></Button>
+        <div className="mt-3 bg-slate-100">
+            <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+                Fields
+            </h2>
+            <div className="mt-3">
+                <Button><Link href='/object/create'>Add Field</Link></Button>
+            </div>
+            <div className="bg-slate-200">
+                <FieldTable fieldsJSON={fieldsJSON} />
+            </div>
         </div>
-        <FieldTable fieldsJSON={fieldsJSON} />
     </div>
 }
