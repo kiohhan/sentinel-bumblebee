@@ -1,5 +1,5 @@
 import { SimpleBreadcrumb } from "@/app/ui/breadcrumb/SimpleBreadcrumb"
-import CreateObjectForm from "@/app/ui/object/create-form"
+import CreateObjectForm from "@/app/ui/object/forms/create-form"
 
 export default function Page() {
     return <div className="p-3">

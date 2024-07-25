@@ -1,7 +1,8 @@
+'use client'
 import { createObject } from "@/app/lib/actions/object/actions"
-import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { SubmitButton } from "../../button/SubmitButton"
 
 export default function CreateObjectForm() {
     return <form className="mt-3" action={createObject}>
@@ -17,7 +18,7 @@ export default function CreateObjectForm() {
 
         </div>
         <div className="flex mt-3">
-            <Button type="submit">Create Object</Button>
+            <SubmitButton label="Create" loading="Creating..." />
         </div>
     </form>
 }

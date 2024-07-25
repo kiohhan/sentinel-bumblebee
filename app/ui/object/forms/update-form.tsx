@@ -1,8 +1,10 @@
+'use client'
 import { updateObject } from "@/app/lib/actions/object/actions"
 import { DBObject } from "@/app/lib/types"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { SubmitButton } from "../../button/SubmitButton"
 
 export default function UpdateObjectForm({ obj }: { obj: DBObject }) {
     const updateObjectWithId = updateObject.bind(null, obj.id)
@@ -19,7 +21,7 @@ export default function UpdateObjectForm({ obj }: { obj: DBObject }) {
 
         </div>
         <div className="flex mt-3">
-            <Button type="submit">Update Object</Button>
+            <SubmitButton label="Update" loading="Updating..." />
         </div>
     </form>
 }

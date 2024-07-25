@@ -1,5 +1,5 @@
 import { fetchObjects } from "@/app/lib/fetch/object"
-import { DeleteObject } from "./delete-form"
+import { DeleteObject } from "./forms/delete-form"
 import {
     Table,
     TableBody,
