@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/select"
 import { DBApp } from "@/app/lib/types"
 
-export default function CreateObjectForm({apps} : {apps: DBApp[]}) {
+export default function CreateObjectForm({ apps, defaultApp }: { apps: DBApp[], defaultApp?: string }) {
     return <form className="mt-3" action={createObject}>
         <div className="flex-col grid gap-4">
             {/* object name */}
@@ -24,7 +24,7 @@ export default function CreateObjectForm({apps} : {apps: DBApp[]}) {
             {/* app */}
             <div className="grid w-full max-w-sm items-center gap-1.5">
                 <Label htmlFor="app">App</Label>
-                <Select name="app">
+                <Select name="app" defaultValue={defaultApp}>
                     <SelectTrigger className="w-[180px]" id="app">
                         <SelectValue placeholder="Select App" />
                     </SelectTrigger>
