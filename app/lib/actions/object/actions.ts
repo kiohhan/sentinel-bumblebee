@@ -8,19 +8,19 @@ import { deleteOne } from '../../db/delete';
 const table = 'objects'
 
 export async function createObject(formData: FormData){
-    const obj = await createOneNoConflict(table, ['name'], [`${formData.get('name')}`])
-    revalidatePath('/object');
+    const obj = await createOneNoConflict(table, ['name', 'app'], [`${formData.get('name')}`, `${formData.get('app')}`])
+    revalidatePath('/object')
     redirect('/object')
 }
 
 export async function updateObject(id: string, formData: FormData){
     const obj = await updateOne(table, ['name'], [`${formData.get('name')}`], id)
-    revalidatePath(`/object`);
+    revalidatePath(`/object`)
     redirect(`/object`)
 }
 
 export async function deleteObject(id: string){
     const obj = await deleteOne(table, id)
-    revalidatePath(`/object`);
+    revalidatePath(`/object`)
     redirect(`/object`)
 }

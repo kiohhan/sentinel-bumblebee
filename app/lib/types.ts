@@ -17,8 +17,17 @@ export type FieldInput = {
     options: string;
 }
 
+export type App = {
+    name: string;
+}
+
+export type DBApp = App & {
+    id: string;
+}
+
 export type Object = {
     name: string;
+    app: string;
     fields: FieldInput[];
     workflows: string;
 }

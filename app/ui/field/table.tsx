@@ -9,8 +9,11 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { FieldInput } from "@/app/lib/types"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { DeleteField } from "./forms/delete-form"
 
-export default function FieldTable({ fields }: { fields: FieldInput[] }) {
+export default function FieldTable({ objId, fields }: { objId: string, fields: FieldInput[] }) {
     return <div>
         <Table className="hidden min-w-full text-gray-900 md:table">
             <TableHeader className="rounded-lg text-left text-sm font-normal">
@@ -23,7 +26,7 @@ export default function FieldTable({ fields }: { fields: FieldInput[] }) {
             </TableHeader>
             <TableBody className="bg-white">
                 {(fields && fields.length > 0 ? (
-                    fields.map((field: any) => {
+                    fields.map((field: FieldInput) => {
                         return (<TableRow className="w-full border-b py-3 text-sm last-of-type:border-none">
                             <TableCell className="whitespace-nowrap py-3">{field.name}</TableCell>
                             <TableCell className="whitespace-nowrap py-3">{field.type}</TableCell>
@@ -33,7 +36,13 @@ export default function FieldTable({ fields }: { fields: FieldInput[] }) {
                                 </div>
                             </TableCell>
                             <TableCell>
-                                
+                                <div className="flex">
+                                    <div className="grid gap-x-1 grid-cols-2">
+                                        <div>
+                                            <DeleteField id={objId} fieldName={field.name} />
+                                        </div>
+                                    </div>
+                                </div>
                             </TableCell>
                         </TableRow>)
                     })

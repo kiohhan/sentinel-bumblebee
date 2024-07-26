@@ -17,7 +17,7 @@ export async function addField(objId: string, formData: FormData) {
     console.log(type)
     console.log(options)
     console.log(fields)
-    let newFields = [] as FieldInput[]
+    let newFields : FieldInput[] = []
     if (fields !== null) {
         newFields = myObj.fields
     } 
@@ -27,5 +27,20 @@ export async function addField(objId: string, formData: FormData) {
         options: options
     } as FieldInput)
     const updateObj = await updateOne(table, ['fields'], [JSON.stringify(newFields)], objId)
-    console.log(updateObj)
+    revalidatePath(`/object/${objId}`)
+    redirect(`/object/${objId}`)
+}
+
+export async function deleteField(objId: string, fieldName: string) {
+    const myObj = await findOneRaw(table, objId) as DBObject
+    const fields = myObj.fields
+    let newFields : FieldInput[] = []
+    for (let i=0; i<fields.length; i++){
+        if (fieldName !== fields[i].name) {
+            newFields.push(fields[i])
+        }
+    }
+    const deleteFieldObj = await updateOne(table, ['fields'], [JSON.stringify(newFields)], objId)
+    revalidatePath(`/object/${objId}`)
+    redirect(`/object/${objId}`)
 }
