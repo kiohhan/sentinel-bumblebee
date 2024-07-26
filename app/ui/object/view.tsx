@@ -31,16 +31,16 @@ export default async function ViewObject({ id }: { id: string }) {
             </div>
         </div>
 
-        <div className="mt-3 bg-slate-100">
-            <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+        <div className="mt-3 bg-slate-100 border-2">
+            <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">
                 Fields
             </h2>
-            <div className="mt-3">
+            <div className="mb-3">
                 <Button><Link href={`/object/${id}/field/create`}>Add Field</Link></Button>
             </div>
             <div className="bg-slate-200">
                 <div>
-                    <FieldTable fieldsJSON={myObj.fields} />
+                    <FieldTable fields={myObj.fields} />
                 </div>
             </div>
         </div>

@@ -8,9 +8,9 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
+import { FieldInput } from "@/app/lib/types"
 
-export default function FieldTable({ fieldsJSON }: { fieldsJSON: string }) {
-    const fields = JSON.parse(fieldsJSON)
+export default function FieldTable({ fields }: { fields: FieldInput[] }) {
     return <div>
         <Table className="hidden min-w-full text-gray-900 md:table">
             <TableHeader className="rounded-lg text-left text-sm font-normal">
@@ -29,7 +29,11 @@ export default function FieldTable({ fieldsJSON }: { fieldsJSON: string }) {
                             <TableCell className="whitespace-nowrap py-3">{field.type}</TableCell>
                             <TableCell className="whitespace-nowrap py-3">
                                 <div className="flex">
+                                    {field.options}
                                 </div>
+                            </TableCell>
+                            <TableCell>
+                                
                             </TableCell>
                         </TableRow>)
                     })

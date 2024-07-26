@@ -13,13 +13,13 @@ export type FieldType = {
 
 export type FieldInput = {
     name: string;
-    dbname: string;
-    type: FieldType;
+    type: string;
+    options: string;
 }
 
 export type Object = {
     name: string;
-    fields: string;
+    fields: FieldInput[];
     workflows: string;
 }
 
