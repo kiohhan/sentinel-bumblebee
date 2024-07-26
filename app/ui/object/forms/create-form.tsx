@@ -2,7 +2,7 @@
 import { createObject } from "@/app/lib/actions/object/actions"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { SubmitButton } from "../../button/SubmitButton"
+import { SubmitButton } from "../../components/button/SubmitButton"
 
 export default function CreateObjectForm() {
     return <form className="mt-3" action={createObject}>

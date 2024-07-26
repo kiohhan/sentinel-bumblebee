@@ -1,4 +1,4 @@
-import { SkeletonTable } from "@/app/ui/skeleton/table"
+import { SkeletonTable } from "@/app/ui/components/skeleton/table"
 import { Suspense } from "react"
 import ViewObject from "@/app/ui/object/view"
 

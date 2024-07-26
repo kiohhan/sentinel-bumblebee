@@ -1,9 +1,9 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import ObjectTable from "../ui/object/table"
-import { SimpleBreadcrumb } from "../ui/breadcrumb/SimpleBreadcrumb"
+import { SimpleBreadcrumb } from "../ui/components/breadcrumb/SimpleBreadcrumb"
 import { Suspense } from "react"
-import { SkeletonTable } from "../ui/skeleton/table"
+import { SkeletonTable } from "../ui/components/skeleton/table"
 
 export default async function Page() {
     return <div className="p-3">

@@ -1,5 +1,5 @@
 import { fetchObject } from "@/app/lib/fetch/object"
-import { SimpleBreadcrumb } from "@/app/ui/breadcrumb/SimpleBreadcrumb"
+import { SimpleBreadcrumb } from "@/app/ui/components/breadcrumb/SimpleBreadcrumb"
 import FieldTable from "@/app/ui/object/fields"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
@@ -36,7 +36,7 @@ export default async function ViewObject({ id }: { id: string }) {
                 Fields
             </h2>
             <div className="mt-3">
-                <Button><Link href='/object/create'>Add Field</Link></Button>
+                <Button><Link href={`/object/${id}/field/create`}>Add Field</Link></Button>
             </div>
             <div className="bg-slate-200">
                 <div>

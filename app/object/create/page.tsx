@@ -1,4 +1,4 @@
-import { SimpleBreadcrumb } from "@/app/ui/breadcrumb/SimpleBreadcrumb"
+import { SimpleBreadcrumb } from "@/app/ui/components/breadcrumb/SimpleBreadcrumb"
 import CreateObjectForm from "@/app/ui/object/forms/create-form"
 
 export default function Page() {

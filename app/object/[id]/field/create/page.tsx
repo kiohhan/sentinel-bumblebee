@@ -1,5 +1,5 @@
 import { Suspense } from "react"
-import { SkeletonTable } from "@/app/ui/skeleton/table"
+import { SkeletonTable } from "@/app/ui/components/skeleton/table"
 import CreateField from "@/app/ui/field/create"
 
 export default async function Page({ params }: { params: { id: string } }) {

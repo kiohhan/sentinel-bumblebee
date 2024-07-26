@@ -3,7 +3,7 @@ import { addField } from "@/app/lib/actions/field/actions"
 import { DBObject } from "@/app/lib/types"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { SubmitButton } from "../../button/SubmitButton"
+import { SubmitButton } from "../../components/button/SubmitButton"
 
 export default function CreateFieldForm({ obj }: { obj: DBObject }) {
     return <form className="mt-3" action={addField}>

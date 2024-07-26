@@ -1,6 +1,6 @@
 import UpdateObjectForm from "@/app/ui/object/forms/update-form"
 import { fetchObject } from "@/app/lib/fetch/object"
-import { SimpleBreadcrumb } from "@/app/ui/breadcrumb/SimpleBreadcrumb"
+import { SimpleBreadcrumb } from "@/app/ui/components/breadcrumb/SimpleBreadcrumb"
 import { DBObject } from "@/app/lib/types"
 
 export default async function EditObject({ id }: { id: string }) {
