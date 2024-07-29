@@ -14,5 +14,5 @@ export function getOptionList(type: string): string {
                 }
             }, null, 2)
     }
-    return ''
+    return '{}'
 }
