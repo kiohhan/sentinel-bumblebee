@@ -12,9 +12,17 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import { getOptionList } from "@/app/lib/field/options"
+import { useState } from "react"
 
 export default function CreateFieldForm({ obj }: { obj: DBObject }) {
+    const handleSelectChange = (value: string) => {
+        console.log(value)
+        setOptionText(getOptionList(value))
+    }
+
     const addFieldWithId = addField.bind(null, obj.id)
+    const [optionText, setOptionText] = useState('')
     return <form className="mt-3" action={addFieldWithId}>
         <div className="flex-col grid gap-4">
             {/* field name */}
@@ -27,7 +35,7 @@ export default function CreateFieldForm({ obj }: { obj: DBObject }) {
             <div className="grid w-full max-w-sm items-center gap-1.5">
                 <Label htmlFor="type">Field Type</Label>
                 {/* <Input type="text" name="type" id="type" placeholder="field1" /> */}
-                <Select name="type">
+                <Select name="type" onValueChange={handleSelectChange}>
                     <SelectTrigger className="w-[180px]" id="type">
                         <SelectValue placeholder="Type" />
                     </SelectTrigger>
@@ -35,8 +43,8 @@ export default function CreateFieldForm({ obj }: { obj: DBObject }) {
                         <SelectItem value="number">Number</SelectItem>
                         <SelectItem value="text">text</SelectItem>
                         <SelectItem value="richtext">Rich Text</SelectItem>
-                        <SelectItem value="single-ref">Ref</SelectItem>
-                        <SelectItem value="multi-ref">Multi Ref</SelectItem>
+                        <SelectItem value="singleref">Ref</SelectItem>
+                        <SelectItem value="multiref">Multi Ref</SelectItem>
                         <SelectItem value="date">Date</SelectItem>
                         <SelectItem value="timestamp">Timestamp</SelectItem>
                         <SelectItem value="boolean">Boolean</SelectItem>
@@ -48,7 +56,14 @@ export default function CreateFieldForm({ obj }: { obj: DBObject }) {
             {/* field options */}
             <div className="grid w-full max-w-sm items-center gap-1.5">
                 <Label htmlFor="options">Options</Label>
-                <Textarea name="options" id="options" placeholder="Type your message here." />
+                <Textarea 
+                    name="options" 
+                    id="options" 
+                    placeholder="Type your message here."
+                    value={optionText}
+                    onChange={e => setOptionText(e.target.value)}
+                >
+                </Textarea>
             </div>
         </div>
         <div className="flex mt-3">
