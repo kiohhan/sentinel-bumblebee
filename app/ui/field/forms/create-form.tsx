@@ -16,13 +16,13 @@ import { getOptionList } from "@/app/lib/field/options"
 import { useState } from "react"
 
 export default function CreateFieldForm({ obj }: { obj: DBObject }) {
+    const [optionText, setOptionText] = useState('')
+    const addFieldWithId = addField.bind(null, obj.id)
+
     const handleSelectChange = (value: string) => {
-        console.log(value)
         setOptionText(getOptionList(value))
     }
 
-    const addFieldWithId = addField.bind(null, obj.id)
-    const [optionText, setOptionText] = useState('')
     return <form className="mt-3" action={addFieldWithId}>
         <div className="flex-col grid gap-4">
             {/* field name */}
@@ -57,6 +57,7 @@ export default function CreateFieldForm({ obj }: { obj: DBObject }) {
             <div className="grid w-full max-w-sm items-center gap-1.5">
                 <Label htmlFor="options">Options</Label>
                 <Textarea 
+                    className="h-[250px]"
                     name="options" 
                     id="options" 
                     placeholder="Type your message here."

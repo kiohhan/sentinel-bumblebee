@@ -13,6 +13,13 @@ export function getOptionList(type: string): string {
                     object: 'myobj1'
                 }
             }, null, 2)
+        case 'multiref':
+            return JSON.stringify({
+                relation: {
+                    object: 'myobj1'
+                },
+                type: 'simple'
+            }, null, 2)
     }
     return '{}'
 }
