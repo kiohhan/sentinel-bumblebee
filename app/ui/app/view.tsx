@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { DBApp } from "@/app/lib/types"
 import { DeleteApp } from "./forms/delete-form"
+import ObjectTable from "../object/table"
 
 export default async function ViewApp({ id }: { id: string }) {
     const myApp = await fetchApp(id) as DBApp
@@ -41,6 +42,7 @@ export default async function ViewApp({ id }: { id: string }) {
             <div className="bg-slate-200">
                 <div>
                     {/* <FieldTable objId={myApp.id} fields={myApp.fields} /> */}
+                    <ObjectTable />
                 </div>
             </div>
         </div>
