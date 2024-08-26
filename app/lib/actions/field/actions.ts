@@ -14,10 +14,11 @@ export async function addField(objId: string, formData: FormData) {
     const slug = formData.get('slug')
     const type = formData.get('type')
     const options = formData.get('options')
+    const optionsFormmatted = JSON.stringify(JSON.parse(options as string))
     console.log(name)
     console.log(slug)
     console.log(type)
-    console.log(options)
+    console.log(optionsFormmatted)
     console.log(fields)
     let newFields : FieldInput[] = []
     if (fields !== null) {
@@ -27,7 +28,7 @@ export async function addField(objId: string, formData: FormData) {
         name: name,
         slug: slug,
         type: type,
-        options: options
+        options: optionsFormmatted
     } as FieldInput)
     const updateObj = await updateOne(table, ['fields'], [JSON.stringify(newFields)], objId)
     revalidatePath(`/object/${objId}`)

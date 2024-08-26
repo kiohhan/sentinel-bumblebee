@@ -1,6 +1,7 @@
 import { fetchObject } from "@/app/lib/fetch/object"
 import { SimpleBreadcrumb } from "@/app/ui/components/breadcrumb/SimpleBreadcrumb"
 import FieldTable from "@/app/ui/field/table"
+import JSONView from "@/app/ui/field/json"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { DBObject } from "@/app/lib/types"
@@ -41,6 +42,17 @@ export default async function ViewObject({ id }: { id: string }) {
             <div className="bg-slate-200">
                 <div>
                     <FieldTable objId={myObj.id} fields={myObj.fields} />
+                </div>
+            </div>
+        </div>
+
+        <div className="mt-3 bg-slate-100 border-2">
+            <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+                JSON
+            </h2>
+            <div className="bg-slate-200">
+                <div>
+                    <JSONView objId={myObj.id} fields={myObj.fields} />
                 </div>
             </div>
         </div>
