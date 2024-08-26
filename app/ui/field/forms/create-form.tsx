@@ -14,13 +14,23 @@ import {
 } from "@/components/ui/select"
 import { getOptionList } from "@/app/lib/field/options"
 import { useState } from "react"
+import kebabCase from "lodash/kebabCase"
 
 export default function CreateFieldForm({ obj }: { obj: DBObject }) {
     const [optionText, setOptionText] = useState('')
+    const [slugText, setSlugText] = useState('')
     const addFieldWithId = addField.bind(null, obj.id)
 
     const handleSelectChange = (value: string) => {
         setOptionText(getOptionList(value))
+    }
+
+    const handleNameChange = (e: any) => {
+        setSlugText(kebabCase(e.target.value).replace("-", "_"))
+    }
+
+    const handleSlugChange = (e: any) => {
+        setSlugText(e.target.value)
     }
 
     return <form className="mt-3" action={addFieldWithId}>
@@ -28,7 +38,13 @@ export default function CreateFieldForm({ obj }: { obj: DBObject }) {
             {/* field name */}
             <div className="grid w-full max-w-sm items-center gap-1.5">
                 <Label htmlFor="name">Field Name</Label>
-                <Input type="text" name="name" id="name" placeholder="field1" />
+                <Input type="text" name="name" id="name" placeholder="My Field" onChange={handleNameChange} />
+            </div>
+
+            {/* field slug name */}
+            <div className="grid w-full max-w-sm items-center gap-1.5">
+                <Label htmlFor="slug">Slug</Label>
+                <Input type="text" name="slug" id="slug" placeholder="my_field" value={slugText} onChange={handleSlugChange} />
             </div>
 
             {/* field type */}
@@ -41,7 +57,7 @@ export default function CreateFieldForm({ obj }: { obj: DBObject }) {
                     </SelectTrigger>
                     <SelectContent>
                         <SelectItem value="number">Number</SelectItem>
-                        <SelectItem value="text">text</SelectItem>
+                        <SelectItem value="text">Text</SelectItem>
                         <SelectItem value="richtext">Rich Text</SelectItem>
                         <SelectItem value="singleref">Ref</SelectItem>
                         <SelectItem value="multiref">Multi Ref</SelectItem>
@@ -60,7 +76,7 @@ export default function CreateFieldForm({ obj }: { obj: DBObject }) {
                     className="h-[250px]"
                     name="options" 
                     id="options" 
-                    placeholder="Type your message here."
+                    placeholder="{}"
                     value={optionText}
                     onChange={e => setOptionText(e.target.value)}
                 >

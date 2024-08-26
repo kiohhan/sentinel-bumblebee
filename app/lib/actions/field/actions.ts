@@ -11,9 +11,11 @@ export async function addField(objId: string, formData: FormData) {
     const myObj = await findOneRaw(table, objId) as DBObject
     const fields = myObj.fields
     const name = formData.get('name')
+    const slug = formData.get('slug')
     const type = formData.get('type')
     const options = formData.get('options')
     console.log(name)
+    console.log(slug)
     console.log(type)
     console.log(options)
     console.log(fields)
@@ -23,6 +25,7 @@ export async function addField(objId: string, formData: FormData) {
     } 
     newFields.push({
         name: name,
+        slug: slug,
         type: type,
         options: options
     } as FieldInput)

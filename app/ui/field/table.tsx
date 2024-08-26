@@ -19,6 +19,7 @@ export default function FieldTable({ objId, fields }: { objId: string, fields: F
             <TableHeader className="rounded-lg text-left text-sm font-normal">
                 <TableRow>
                     <TableHead className="py-5 font-medium">Name</TableHead>
+                    <TableHead className="py-5 font-medium">Slug</TableHead>
                     <TableHead className="py-5 font-medium">Type</TableHead>
                     <TableHead className="py-5 font-medium">Options</TableHead>
                     <TableHead className="py-5 font-medium">Actions</TableHead>
@@ -29,6 +30,7 @@ export default function FieldTable({ objId, fields }: { objId: string, fields: F
                     fields.map((field: FieldInput) => {
                         return (<TableRow className="w-full border-b py-3 text-sm last-of-type:border-none">
                             <TableCell className="whitespace-nowrap py-3">{field.name}</TableCell>
+                            <TableCell className="whitespace-nowrap py-3">{field.slug}</TableCell>
                             <TableCell className="whitespace-nowrap py-3">{field.type}</TableCell>
                             <TableCell className="whitespace-nowrap py-3">
                                 <div className="flex">

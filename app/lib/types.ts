@@ -13,6 +13,7 @@ export type FieldType = {
 
 export type FieldInput = {
     name: string;
+    slug: string;
     type: string;
     options: string;
 }
