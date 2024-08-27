@@ -12,9 +12,9 @@ import {
 } from "@/components/ui/table"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { DBObject } from "@/app/lib/types"
 
-export default async function ObjectTable() {
-    const objects = await fetchObjects()
+export default async function ObjectTable({ objects }: { objects: DBObject[] }) {
     console.log(objects)
     return <div>
         <Table className="hidden min-w-full text-gray-900 md:table">

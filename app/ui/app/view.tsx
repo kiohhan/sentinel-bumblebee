@@ -3,12 +3,14 @@ import { SimpleBreadcrumb } from "@/app/ui/components/breadcrumb/SimpleBreadcrum
 import FieldTable from "@/app/ui/field/table"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { DBApp } from "@/app/lib/types"
+import { DBApp, DBObject } from "@/app/lib/types"
 import { DeleteApp } from "./forms/delete-form"
 import ObjectTable from "../object/table"
+import { fetchObjects, fetchObjectsByApp } from "@/app/lib/fetch/object"
 
 export default async function ViewApp({ id }: { id: string }) {
     const myApp = await fetchApp(id) as DBApp
+    const myObjeects = await fetchObjectsByApp(id) as DBObject[]
     return <>
         <div>
             <SimpleBreadcrumb list={[
@@ -42,7 +44,7 @@ export default async function ViewApp({ id }: { id: string }) {
             <div className="bg-slate-200">
                 <div>
                     {/* <FieldTable objId={myApp.id} fields={myApp.fields} /> */}
-                    <ObjectTable />
+                    <ObjectTable objects={myObjeects} />
                 </div>
             </div>
         </div>

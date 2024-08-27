@@ -4,8 +4,11 @@ import ObjectTable from "../ui/object/table"
 import { SimpleBreadcrumb } from "../ui/components/breadcrumb/SimpleBreadcrumb"
 import { Suspense } from "react"
 import { SkeletonTable } from "../ui/components/skeleton/table"
+import { fetchObjects } from "../lib/fetch/object"
+import { DBObject } from "../lib/types"
 
 export default async function Page() {
+    const myObjects = await fetchObjects() as DBObject[]
     return <div className="p-3">
         <div>
             <SimpleBreadcrumb list={[
@@ -20,7 +23,7 @@ export default async function Page() {
         </div>
         <div>
             <Suspense key='objects' fallback={<SkeletonTable />}>
-                <ObjectTable />
+                <ObjectTable objects={myObjects} />
             </Suspense>
         </div>
     </div>
