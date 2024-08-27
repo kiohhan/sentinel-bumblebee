@@ -56,7 +56,7 @@ export default async function ViewApp({ id }: { id: string }) {
             </h2>
             <div className="bg-slate-200">
                 <div>
-                   <pre className="text-xs">{JSON.stringify(myJson, null, 2)}</pre>
+                   <pre className="bg-white text-xs">{JSON.stringify(myJson, null, 2)}</pre>
                 </div>
             </div>
         </div>
