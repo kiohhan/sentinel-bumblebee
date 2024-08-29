@@ -1,5 +1,6 @@
 import { FieldInput } from "@/app/lib/types"
 export default function JSONView({ objId, fields }: { objId: string, fields: FieldInput[] }) {
+    console.log(fields)
     let newFields: FieldInput[] = []
     if (fields && fields.length && fields.length > 0) {
         fields.forEach(field => {

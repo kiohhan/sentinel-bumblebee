@@ -1,5 +1,5 @@
 'use client'
-import { addField } from "@/app/lib/actions/field/actions"
+import { addFieldFromForm } from "@/app/lib/actions/field/actions"
 import { DBObject } from "@/app/lib/types"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -13,13 +13,33 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { getOptionList } from "@/app/lib/field/options"
-import { useState } from "react"
+import { FC, useState } from "react"
 import kebabCase from "lodash/kebabCase"
+import { useFormState } from "react-dom"
+
+interface FormErrorProps {
+    errors?: string[];
+}
+
+const FormError: FC<FormErrorProps> = ({ errors }) => {
+    if (!errors?.length) return null
+    return (
+        <div className="p-2" key={errors[0]}>
+            {errors.map((err) => {
+                return (
+                    <p className="text-tiny text-red-400 list-item">
+                        {err}
+                    </p>
+                )
+            })}
+        </div>
+    )
+}
 
 export default function CreateFieldForm({ obj }: { obj: DBObject }) {
+    const [state, formAction] = useFormState(addFieldFromForm.bind(null, obj.id), { success: false })
     const [optionText, setOptionText] = useState('')
     const [slugText, setSlugText] = useState('')
-    const addFieldWithId = addField.bind(null, obj.id)
 
     const handleSelectChange = (value: string) => {
         setOptionText(getOptionList(value))
@@ -33,19 +53,23 @@ export default function CreateFieldForm({ obj }: { obj: DBObject }) {
         setSlugText(e.target.value)
     }
 
-    return <form className="mt-3" action={addFieldWithId}>
+    return <form className="mt-3" action={formAction}>
         <div className="flex-col grid gap-4">
             {/* field name */}
             <div className="grid w-full max-w-sm items-center gap-1.5">
                 <Label htmlFor="name">Field Name</Label>
                 <Input type="text" name="name" id="name" placeholder="My Field" onChange={handleNameChange} />
+                <FormError errors={state.errors?.name} />
             </div>
+
 
             {/* field slug name */}
             <div className="grid w-full max-w-sm items-center gap-1.5">
                 <Label htmlFor="slug">Slug</Label>
                 <Input type="text" name="slug" id="slug" placeholder="my_field" value={slugText} onChange={handleSlugChange} />
+                <FormError errors={state.errors?.slug} />
             </div>
+
 
             {/* field type */}
             <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -67,20 +91,22 @@ export default function CreateFieldForm({ obj }: { obj: DBObject }) {
                         <SelectItem value="user">User</SelectItem>
                     </SelectContent>
                 </Select>
+                <FormError errors={state.errors?.type} />
             </div>
 
             {/* field options */}
             <div className="grid w-full max-w-sm items-center gap-1.5">
                 <Label htmlFor="options">Options</Label>
-                <Textarea 
+                <Textarea
                     className="h-[250px]"
-                    name="options" 
-                    id="options" 
+                    name="options"
+                    id="options"
                     placeholder="{}"
                     value={optionText}
                     onChange={e => setOptionText(e.target.value)}
                 >
                 </Textarea>
+                <FormError errors={state.errors?.options} />
             </div>
         </div>
         <div className="flex mt-3">

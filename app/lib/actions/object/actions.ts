@@ -4,11 +4,13 @@ import { redirect } from 'next/navigation';
 import { createOneNoConflict } from "../../db/insert"
 import { updateOne } from '../../db/update';
 import { deleteOne } from '../../db/delete';
+import { addField } from '../field/actions';
 
 const table = 'objects'
 
 export async function createObject(formData: FormData){
     const obj = await createOneNoConflict(table, ['name', 'app'], [`${formData.get('name')}`, `${formData.get('app')}`])
+    console.log(obj)
     revalidatePath('/object')
     redirect('/object')
 }
