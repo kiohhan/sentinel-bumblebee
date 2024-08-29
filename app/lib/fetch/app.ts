@@ -19,12 +19,15 @@ export async function fetchAppJSON(id: string) {
     for (let i=0; i<objs.length; i++){
         const fieldJson = await fetchObjectFieldsJSON(objs[i].id)
         myObjectsJson.push({
-            object: objs[i].name,
-            fields: fieldJson
+            name: objs[i].name,
+            slug: objs[i].name,
+            fields: fieldJson,
+            workflow: {}
         })
     }
     return {
         name: app.name,
+        slug: app.name,
         objects: myObjectsJson
     }
 }
