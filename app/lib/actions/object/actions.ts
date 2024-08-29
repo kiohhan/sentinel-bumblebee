@@ -5,12 +5,22 @@ import { createOneNoConflict } from "../../db/insert"
 import { updateOne } from '../../db/update';
 import { deleteOne } from '../../db/delete';
 import { addField } from '../field/actions';
+import { FieldInput } from '../../types';
 
 const table = 'objects'
 
 export async function createObject(formData: FormData){
     const obj = await createOneNoConflict(table, ['name', 'app'], [`${formData.get('name')}`, `${formData.get('app')}`])
-    console.log(obj)
+    const objId = obj.rows[0].id
+    await addField(objId, {
+        name: "name", 
+        slug: "name",
+        type: "text",
+        options: JSON.stringify({
+            "unique": true,
+            "emptyok": false
+        })
+    } as FieldInput)
     revalidatePath('/object')
     redirect('/object')
 }
