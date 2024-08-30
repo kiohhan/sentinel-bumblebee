@@ -21,14 +21,14 @@ export async function createObject(formData: FormData){
             "emptyok": false
         })
     } as FieldInput)
-    revalidatePath('/object')
-    redirect('/object')
+    revalidatePath(`/object/${objId}`)
+    redirect(`/object/${objId}`)
 }
 
 export async function updateObject(id: string, formData: FormData){
     const obj = await updateOne(table, ['name'], [`${formData.get('name')}`], id)
-    revalidatePath(`/object`)
-    redirect(`/object`)
+    revalidatePath(`/object/${id}`)
+    redirect(`/object/${id}`)
 }
 
 export async function deleteObject(id: string){
