@@ -83,8 +83,8 @@ export default function CreateFieldForm({ obj }: { obj: DBObject }) {
                         <SelectItem value="number">Number</SelectItem>
                         <SelectItem value="text">Text</SelectItem>
                         <SelectItem value="richtext">Rich Text</SelectItem>
-                        <SelectItem value="singleref">Ref</SelectItem>
-                        <SelectItem value="multiref">Multi Ref</SelectItem>
+                        <SelectItem value="singlerel">Ref</SelectItem>
+                        <SelectItem value="multirel">Multi Ref</SelectItem>
                         <SelectItem value="date">Date</SelectItem>
                         <SelectItem value="timestamp">Timestamp</SelectItem>
                         <SelectItem value="boolean">Boolean</SelectItem>

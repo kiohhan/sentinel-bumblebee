@@ -7,13 +7,13 @@ export function getOptionList(type: string): string {
             }, null, 2)
         case 'richtext':
             return JSON.stringify({})
-        case 'singleref':
+        case 'singlerel':
             return JSON.stringify({
                 relation: {
                     object: 'myobj1'
                 }
             }, null, 2)
-        case 'multiref':
+        case 'multirel':
             return JSON.stringify({
                 relation: {
                     object: 'myobj1'
