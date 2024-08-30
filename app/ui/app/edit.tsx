@@ -1,7 +1,7 @@
 import UpdateAppForm from "./forms/update-form"
-import { fetchApp } from "@/app/lib/fetch/app"
+import { fetchApp } from "@/server/fetch/app"
 import { SimpleBreadcrumb } from "@/app/ui/components/breadcrumb/SimpleBreadcrumb"
-import { DBApp } from "@/app/lib/types"
+import { DBApp } from "@/server/types"
 
 export default async function EditApp({ id }: { id: string }) {
     const myApp = await fetchApp(id) as DBApp

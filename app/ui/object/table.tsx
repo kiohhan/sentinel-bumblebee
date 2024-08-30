@@ -1,4 +1,4 @@
-import { fetchObjects } from "@/app/lib/fetch/object"
+import { fetchObjects } from "@/server/fetch/object"
 import { DeleteObject } from "./forms/delete-form"
 import {
     Table,
@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/table"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { DBObject } from "@/app/lib/types"
+import { DBObject } from "@/server/types"
 
 export default async function ObjectTable({ objects }: { objects: DBObject[] }) {
     console.log(objects)

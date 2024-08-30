@@ -1,12 +1,12 @@
-import { fetchApp, fetchAppJSON } from "@/app/lib/fetch/app"
+import { fetchApp, fetchAppJSON } from "@/server/fetch/app"
 import { SimpleBreadcrumb } from "@/app/ui/components/breadcrumb/SimpleBreadcrumb"
 import FieldTable from "@/app/ui/field/table"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { DBApp, DBObject } from "@/app/lib/types"
+import { DBApp, DBObject } from "@/server/types"
 import { DeleteApp } from "./forms/delete-form"
 import ObjectTable from "../object/table"
-import { fetchObjects, fetchObjectsByApp } from "@/app/lib/fetch/object"
+import { fetchObjects, fetchObjectsByApp } from "@/server/fetch/object"
 
 export default async function ViewApp({ id }: { id: string }) {
     const myApp = await fetchApp(id) as DBApp

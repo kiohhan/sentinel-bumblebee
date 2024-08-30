@@ -1,5 +1,5 @@
 'use client'
-import { createObject } from "@/app/lib/actions/object/actions"
+import { createObject } from "@/server/actions/object/actions"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { SubmitButton } from "../../components/button/SubmitButton"
@@ -10,7 +10,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import { DBApp } from "@/app/lib/types"
+import { DBApp } from "@/server/types"
 
 export default function CreateObjectForm({ apps, defaultApp }: { apps: DBApp[], defaultApp?: string }) {
     return <form className="mt-3" action={createObject}>

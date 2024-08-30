@@ -1,7 +1,7 @@
 import CreateFieldForm from "./forms/create-form"
-import { fetchObject } from "@/app/lib/fetch/object"
+import { fetchObject } from "@/server/fetch/object"
 import { SimpleBreadcrumb } from "@/app/ui/components/breadcrumb/SimpleBreadcrumb"
-import { DBObject } from "@/app/lib/types"
+import { DBObject } from "@/server/types"
 
 export default async function Page({ id }: { id: string }) {
     const myObj = await fetchObject(id) as DBObject

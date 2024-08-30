@@ -8,7 +8,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 
-import { BreadcrumbType } from "@/app/lib/types"
+import { BreadcrumbType } from "@/server/types"
 
 export function SimpleBreadcrumb({ list }: { list: BreadcrumbType[] }) {
   return (

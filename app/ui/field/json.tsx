@@ -1,4 +1,4 @@
-import { FieldInput } from "@/app/lib/types"
+import { FieldInput } from "@/server/types"
 export default function JSONView({ objId, fields }: { objId: string, fields: FieldInput[] }) {
     console.log(fields)
     let newFields: FieldInput[] = []

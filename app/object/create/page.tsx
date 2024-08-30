@@ -1,5 +1,5 @@
-import { fetchApps } from "@/app/lib/fetch/app"
-import { DBApp } from "@/app/lib/types"
+import { fetchApps } from "@/server/fetch/app"
+import { DBApp } from "@/server/types"
 import { SimpleBreadcrumb } from "@/app/ui/components/breadcrumb/SimpleBreadcrumb"
 import CreateObjectForm from "@/app/ui/object/forms/create-form"
 

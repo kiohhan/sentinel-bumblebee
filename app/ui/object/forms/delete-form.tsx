@@ -1,5 +1,5 @@
 'use client'
-import { deleteObject } from "@/app/lib/actions/object/actions";
+import { deleteObject } from "@/server/actions/object/actions";
 import { Button } from "@/components/ui/button";
 import { DeleteButton } from "../../components/button/DeleteButton";
 export function DeleteObject({ id }: { id: string }) {

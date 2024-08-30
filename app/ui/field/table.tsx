@@ -8,7 +8,7 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
-import { FieldInput } from "@/app/lib/types"
+import { FieldInput } from "@/server/types"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { DeleteField } from "./forms/delete-form"

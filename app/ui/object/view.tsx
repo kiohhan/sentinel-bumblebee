@@ -1,10 +1,10 @@
-import { fetchObject } from "@/app/lib/fetch/object"
+import { fetchObject } from "@/server/fetch/object"
 import { SimpleBreadcrumb } from "@/app/ui/components/breadcrumb/SimpleBreadcrumb"
 import FieldTable from "@/app/ui/field/table"
 import JSONView from "@/app/ui/field/json"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { DBObject } from "@/app/lib/types"
+import { DBObject } from "@/server/types"
 import { DeleteObject } from "./forms/delete-form"
 
 export default async function ViewObject({ id }: { id: string }) {

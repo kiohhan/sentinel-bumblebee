@@ -1,6 +1,6 @@
 'use client'
-import { updateApp } from "@/app/lib/actions/app/actions"
-import { DBApp } from "@/app/lib/types"
+import { updateApp } from "@/server/actions/app/actions"
+import { DBApp } from "@/server/types"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { SubmitButton } from "../../components/button/SubmitButton"

@@ -1,6 +1,6 @@
 'use client'
-import { addFieldFromForm } from "@/app/lib/actions/field/actions"
-import { DBObject } from "@/app/lib/types"
+import { addFieldFromForm } from "@/server/actions/field/actions"
+import { DBObject } from "@/server/types"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
@@ -12,7 +12,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import { getOptionList } from "@/app/lib/field/options"
+import { getOptionList } from "@/server/field/options"
 import { FC, useState } from "react"
 import kebabCase from "lodash/kebabCase"
 import { useFormState } from "react-dom"

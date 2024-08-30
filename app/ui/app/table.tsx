@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/table"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { fetchApps } from "@/app/lib/fetch/app"
+import { fetchApps } from "@/server/fetch/app"
 import { DeleteApp } from "./forms/delete-form"
 
 export default async function AppTable() {

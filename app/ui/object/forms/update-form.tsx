@@ -1,6 +1,6 @@
 'use client'
-import { updateObject } from "@/app/lib/actions/object/actions"
-import { DBObject } from "@/app/lib/types"
+import { updateObject } from "@/server/actions/object/actions"
+import { DBObject } from "@/server/types"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"

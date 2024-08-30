@@ -4,8 +4,8 @@ import ObjectTable from "../ui/object/table"
 import { SimpleBreadcrumb } from "../ui/components/breadcrumb/SimpleBreadcrumb"
 import { Suspense } from "react"
 import { SkeletonTable } from "../ui/components/skeleton/table"
-import { fetchObjects } from "../lib/fetch/object"
-import { DBObject } from "../lib/types"
+import { fetchObjects } from "../../server/fetch/object"
+import { DBObject } from "../../server/types"
 
 export default async function Page() {
     const myObjects = await fetchObjects() as DBObject[]
