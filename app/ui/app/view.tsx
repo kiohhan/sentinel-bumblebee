@@ -7,6 +7,7 @@ import { DBApp, DBObject } from "@/server/types"
 import { DeleteApp } from "./forms/delete-form"
 import ObjectTable from "../object/table"
 import { fetchObjects, fetchObjectsByApp } from "@/server/fetch/object"
+import { CopyButton } from "../components/button/CopyButton"
 
 export default async function ViewApp({ id }: { id: string }) {
     const myApp = await fetchApp(id) as DBApp
@@ -51,13 +52,20 @@ export default async function ViewApp({ id }: { id: string }) {
         </div>
 
         <div className="mt-3 bg-slate-100 border-2">
-            <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">
-                JSON
-            </h2>
+            <div className="flex flex-cols justify-between">
+                <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+                    JSON
+                </h2>
+                <div>
+                    <CopyButton jsonText={JSON.stringify(myJson, null, 2)}/>
+                </div>
+            </div>
+
             <div className="bg-slate-200">
                 <div>
-                   <pre className="bg-white text-xs">{JSON.stringify(myJson, null, 2)}</pre>
+                    <pre className="bg-white text-xs">{JSON.stringify(myJson, null, 2)}</pre>
                 </div>
+
             </div>
         </div>
     </>
