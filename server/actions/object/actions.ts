@@ -1,7 +1,7 @@
 'use server'
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import { createOneNoConflict } from "../../db/insert"
+import { createOneNoConflict, createOneJunction } from "../../db/insert"
 import { updateOne } from '../../db/update';
 import { deleteOne } from '../../db/delete';
 import { addField } from '../field/actions';
@@ -10,7 +10,7 @@ import { FieldInput } from '../../types';
 const table = 'objects'
 
 export async function createObject(formData: FormData){
-    const obj = await createOneNoConflict(table, ['name', 'app'], [`${formData.get('name')}`, `${formData.get('app')}`])
+    const obj = await createOneJunction(table, ['name', 'app'], [`${formData.get('name')}`, `${formData.get('app')}`])
     const objId = obj.rows[0].id
     await addField(objId, {
         name: "name", 
