@@ -20,7 +20,7 @@ export interface CreateFieldError {
 }
 
 const type_list = [
-    "number",
+    "numeric",
     "text",
     "richtext",
     "singlerel",

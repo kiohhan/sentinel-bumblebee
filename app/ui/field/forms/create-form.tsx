@@ -80,7 +80,7 @@ export default function CreateFieldForm({ obj }: { obj: DBObject }) {
                         <SelectValue placeholder="Type" />
                     </SelectTrigger>
                     <SelectContent>
-                        <SelectItem value="number">Number</SelectItem>
+                        <SelectItem value="numeric">Number</SelectItem>
                         <SelectItem value="text">Text</SelectItem>
                         <SelectItem value="richtext">Rich Text</SelectItem>
                         <SelectItem value="singlerel">Ref</SelectItem>
