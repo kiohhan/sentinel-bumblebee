@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS objects (
     name VARCHAR(100) NOT NULL,
     description TEXT,
     app INT,
+    options JSON,
     FOREIGN KEY (app) REFERENCES apps (id),
     fields JSON, 
     workflows JSON
