@@ -21,6 +21,7 @@ export async function fetchAppJSON(id: string) {
         myObjectsJson.push({
             name: objs[i].name,
             slug: objs[i].name,
+            options: objs[i].options,
             fields: fieldJson,
             workflow: {}
         })

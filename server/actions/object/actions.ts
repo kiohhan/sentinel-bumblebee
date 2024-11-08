@@ -9,11 +9,18 @@ import { FieldInput } from '../../types';
 
 const table = 'objects'
 
-export async function createObject(formData: FormData){
-    const obj = await createOneJunction(table, ['name', 'app', 'options'], [`${formData.get('name')}`, `${formData.get('app')}`, `${formData.get('app')}`])
+export async function createObject(formData: FormData) {
+    const options = formData.get('options')
+    const optionsFormmatted = JSON.stringify(JSON.parse(options as string))
+
+    const obj = await createOneJunction(
+        table,
+        ['name', 'app', 'options'],
+        [`${formData.get('name')}`, `${formData.get('app')}`, optionsFormmatted]
+    )
     const objId = obj.rows[0].id
     await addField(objId, {
-        name: "name", 
+        name: "name",
         slug: "name",
         type: "text",
         options: JSON.stringify({
@@ -25,13 +32,15 @@ export async function createObject(formData: FormData){
     redirect(`/object/${objId}`)
 }
 
-export async function updateObject(id: string, formData: FormData){
-    const obj = await updateOne(table, ['name'], [`${formData.get('name')}`], id)
+export async function updateObject(id: string, formData: FormData) {
+    const options = formData.get('options')
+    const optionsFormmatted = JSON.stringify(JSON.parse(options as string))
+    const obj = await updateOne(table, ['name', 'options'], [`${formData.get('name')}`, optionsFormmatted], id)
     revalidatePath(`/object/${id}`)
     redirect(`/object/${id}`)
 }
 
-export async function deleteObject(id: string){
+export async function deleteObject(id: string) {
     const obj = await deleteOne(table, id)
     revalidatePath(`/object`)
     redirect(`/object`)

@@ -9,6 +9,7 @@ import { DeleteObject } from "./forms/delete-form"
 
 export default async function ViewObject({ id }: { id: string }) {
     const myObj = await fetchObject(id) as DBObject
+    console.log(myObj)
     return <>
         <div>
             <SimpleBreadcrumb list={[
@@ -37,7 +38,7 @@ export default async function ViewObject({ id }: { id: string }) {
                 Options
             </h2>
             <div className="bg-white">
-                {`${myObj.options}`}
+                {`${JSON.stringify(myObj.options)}`}
             </div>
         </div>
 
