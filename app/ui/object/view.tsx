@@ -34,6 +34,15 @@ export default async function ViewObject({ id }: { id: string }) {
 
         <div className="mt-3 bg-slate-100 border-2">
             <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+                Options
+            </h2>
+            <div className="bg-white">
+                {`${myObj.options}`}
+            </div>
+        </div>
+
+        <div className="mt-3 bg-slate-100 border-2">
+            <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">
                 Fields
             </h2>
             <div className="mb-3">

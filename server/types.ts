@@ -29,6 +29,7 @@ export type DBApp = App & {
 export type Object = {
     name: string;
     app: string;
+    options: string;
     fields: FieldInput[];
     workflows: string;
 }

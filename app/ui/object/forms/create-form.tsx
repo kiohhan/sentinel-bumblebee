@@ -2,6 +2,7 @@
 import { createObject } from "@/server/actions/object/actions"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
 import { SubmitButton } from "../../components/button/SubmitButton"
 import {
     Select,
@@ -38,7 +39,19 @@ export default function CreateObjectForm({ apps, defaultApp }: { apps: DBApp[], 
                 </Select>
             </div>
 
-            {/* fields */}
+
+            {/* object options */}
+            <div className="grid w-full max-w-sm items-center gap-1.5">
+                <Label htmlFor="options">Options</Label>
+                <Textarea
+                    className="h-[250px]"
+                    name="options"
+                    id="options"
+                    placeholder="{}"
+                    defaultValue={`{}`}
+                >
+                </Textarea>
+            </div>
             {/* workflow */}
 
         </div>

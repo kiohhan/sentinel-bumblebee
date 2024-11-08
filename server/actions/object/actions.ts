@@ -10,7 +10,7 @@ import { FieldInput } from '../../types';
 const table = 'objects'
 
 export async function createObject(formData: FormData){
-    const obj = await createOneJunction(table, ['name', 'app'], [`${formData.get('name')}`, `${formData.get('app')}`])
+    const obj = await createOneJunction(table, ['name', 'app', 'options'], [`${formData.get('name')}`, `${formData.get('app')}`, `${formData.get('app')}`])
     const objId = obj.rows[0].id
     await addField(objId, {
         name: "name", 
