@@ -48,7 +48,10 @@ export default function CreateObjectForm({ apps, defaultApp }: { apps: DBApp[], 
                     name="options"
                     id="options"
                     placeholder="{}"
-                    defaultValue={`{}`}
+                    defaultValue={`{
+    "prefix": "DOC",
+    "display": "doc_name"
+}`}
                 >
                 </Textarea>
             </div>
