@@ -109,6 +109,13 @@ export default function CreateFieldForm({ obj }: { obj: DBObject }) {
                 <FormError errors={state.errors?.options} />
             </div>
         </div>
+        <div className="bg-slate-100">
+            <div >Options</div>
+            <pre className="text-xs">
+                {`    "displayname": "Name"`}
+            </pre>
+
+        </div>
         <div className="flex mt-3">
             <SubmitButton label="Create" loading="Creating..." />
         </div>
