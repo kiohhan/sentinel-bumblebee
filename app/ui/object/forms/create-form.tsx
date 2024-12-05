@@ -12,14 +12,55 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { DBApp } from "@/server/types"
+import { useState } from "react"
+import { capitalize } from "lodash"
+
+const objectDefault = `{
+    "prefix": "DOC",
+    "display": "doc_name"
+}`
+
+const workflowDefault = `{
+    "name": "field_workflow",
+    "states": [
+        { "name": "none", "is_active": true, "is_end": false },
+        { "name": "open", "is_active": true, "is_end": false }
+    ],
+    "transitions": [
+        { "name": "submit", "from_state": "none", "to_state": "open", "is_active": true, "is_submit": true }
+    ]
+}
+`
+
+
 
 export default function CreateObjectForm({ apps, defaultApp }: { apps: DBApp[], defaultApp?: string }) {
+
+    const [objName, setObjName] = useState('')
+    const [optionsText, setOptionsText] = useState(objectDefault)
+    const [workflowText, setWorkflowText] = useState(workflowDefault)
+    const handleNameChange = (name: string) => {
+        setWorkflowText(`{
+    "name": "${name}_workflow",
+    "states": [
+        { "name": "none", "is_active": true, "is_end": false },
+        { "name": "open", "is_active": true, "is_end": false }
+    ],
+    "transitions": [
+        { "name": "submit", "from_state": "none", "to_state": "open", "is_active": true, "is_submit": true }
+    ]
+}`)
+        setOptionsText(`{
+    "prefix": "${name.toUpperCase()}",
+    "display": "${name}_name"
+}`)
+    }
     return <form className="mt-3" action={createObject}>
         <div className="flex-col grid gap-4">
             {/* object name */}
             <div className="grid w-full max-w-sm items-center gap-1.5">
                 <Label htmlFor="name">Object Name</Label>
-                <Input type="text" name="name" id="name" placeholder="obj1" />
+                <Input type="text" name="name" id="name" placeholder="obj1" value={objName} onChange={e => {handleNameChange(e.target.value); setObjName(e.target.value)}} />
             </div>
 
             {/* app */}
@@ -48,14 +89,26 @@ export default function CreateObjectForm({ apps, defaultApp }: { apps: DBApp[], 
                     name="options"
                     id="options"
                     placeholder="{}"
-                    defaultValue={`{
-    "prefix": "DOC",
-    "display": "doc_name"
-}`}
+                    defaultValue={objectDefault}
+                    value={optionsText}
+                    onChange={e => setOptionsText(e.target.value)}
                 >
                 </Textarea>
             </div>
             {/* workflow */}
+            <div className="grid w-full max-w-screen-md items-center gap-1.5">
+                <Label htmlFor="workflow">Worflow</Label>
+                <Textarea
+                    className="h-[250px]"
+                    name="workflow"
+                    id="workflow"
+                    placeholder="{}"
+                    defaultValue={workflowDefault}
+                    value={workflowText}
+                    onChange={e => setWorkflowText(e.target.value)}
+                >
+                </Textarea>
+            </div>
 
         </div>
         <div className="flex mt-3">
