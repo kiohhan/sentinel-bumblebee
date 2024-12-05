@@ -22,8 +22,8 @@ export async function fetchAppJSON(id: string) {
             name: objs[i].name,
             slug: objs[i].name,
             options: objs[i].options,
-            fields: fieldJson,
-            workflow: {}
+            workflow: objs[i].workflows,
+            fields: fieldJson
         })
     }
     return {
