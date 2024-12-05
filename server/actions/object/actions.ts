@@ -12,11 +12,13 @@ const table = 'objects'
 export async function createObject(formData: FormData) {
     const options = formData.get('options')
     const optionsFormmatted = JSON.stringify(JSON.parse(options as string))
+    const workflows = formData.get('workflows')
+    const workflowsFormmatted = JSON.stringify(JSON.parse(workflows as string))
 
     const obj = await createOneJunction(
         table,
-        ['name', 'app', 'options'],
-        [`${formData.get('name')}`, `${formData.get('app')}`, optionsFormmatted]
+        ['name', 'app', 'options', 'workflows'],
+        [`${formData.get('name')}`, `${formData.get('app')}`, optionsFormmatted, workflowsFormmatted]
     )
     const objId = obj.rows[0].id
     await addField(objId, {
@@ -35,7 +37,9 @@ export async function createObject(formData: FormData) {
 export async function updateObject(id: string, formData: FormData) {
     const options = formData.get('options')
     const optionsFormmatted = JSON.stringify(JSON.parse(options as string))
-    const obj = await updateOne(table, ['name', 'options'], [`${formData.get('name')}`, optionsFormmatted], id)
+    const workflows = formData.get('workflows')
+    const workflowsFormmatted = JSON.stringify(JSON.parse(workflows as string))
+    const obj = await updateOne(table, ['name', 'options', 'workflows'], [`${formData.get('name')}`, optionsFormmatted, workflowsFormmatted], id)
     revalidatePath(`/object/${id}`)
     redirect(`/object/${id}`)
 }

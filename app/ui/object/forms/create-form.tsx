@@ -97,11 +97,11 @@ export default function CreateObjectForm({ apps, defaultApp }: { apps: DBApp[], 
             </div>
             {/* workflow */}
             <div className="grid w-full max-w-screen-md items-center gap-1.5">
-                <Label htmlFor="workflow">Worflow</Label>
+                <Label htmlFor="workflows">Worflow</Label>
                 <Textarea
                     className="h-[250px]"
-                    name="workflow"
-                    id="workflow"
+                    name="workflows"
+                    id="workflows"
                     placeholder="{}"
                     defaultValue={workflowDefault}
                     value={workflowText}
