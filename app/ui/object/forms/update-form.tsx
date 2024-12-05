@@ -18,7 +18,7 @@ export default function UpdateObjectForm({ obj }: { obj: DBObject }) {
             </div>
 
             {/* fields */}
-            {/* workflow */}
+
             {/* object options */}
             <div className="grid w-full max-w-sm items-center gap-1.5">
                 <Label htmlFor="options">Options</Label>
@@ -28,6 +28,18 @@ export default function UpdateObjectForm({ obj }: { obj: DBObject }) {
                     id="options"
                     placeholder="{}"
                     defaultValue={`${JSON.stringify(obj.options)}`}
+                >
+                </Textarea>
+            </div>
+            {/* workflow */}
+            <div className="grid w-full max-w-screen-md items-center gap-1.5">
+                <Label htmlFor="workflows">Workflow</Label>
+                <Textarea
+                    className="h-[250px]"
+                    name="workflows"
+                    id="workflows"
+                    placeholder="{}"
+                    defaultValue={`${JSON.stringify(obj.workflows, null, 2)}`}
                 >
                 </Textarea>
             </div>
