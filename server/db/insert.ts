@@ -75,6 +75,7 @@ export const createOneNoConflict = async (table: string, fields: string[], field
     try {
         let sql = `INSERT INTO ${table} (${util_getFieldInsertSQL(table, fields)}) VALUES (${util_getFieldValueInsertSQL(table, fieldValues)}) ON CONFLICT DO NOTHING RETURNING id`
         console.log(sql)
+        console.log(fieldValues)
         const resp = await myPool.query(sql, fieldValues)
         return resp
     } catch (e) {
